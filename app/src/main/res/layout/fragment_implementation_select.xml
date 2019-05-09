@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="net.bjoernpetersen.qbert.android.PluginType" />
+
+        <variable
+            name="baseClassName"
+            type="String" />
+
+        <variable
+            name="baseDisplayName"
+            type="String" />
+
+        <variable
+            name="isDisabled"
+            type="boolean" />
+
+        <variable
+            name="isLoaded"
+            type="boolean" />
+
+        <variable
+            name="type"
+            type="PluginType" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_top">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="@{baseDisplayName}"
+                        android:textColor="@color/textTitle"
+                        android:textSize="@dimen/h2"
+                        android:textStyle="bold"
+                        tools:text="Spotify recommendation suggester" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_text"
+                        android:singleLine="true"
+                        android:text="@{type.displayName}"
+                        android:textSize="12sp"
+                        tools:text="Provider" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:singleLine="true"
+                    android:text="@{baseClassName}"
+                    android:textSize="12sp"
+                    tools:text="net.bjoernpetersen.musicbot.spotify.SpotifyProvider" />
+            </LinearLayout>
+
+            <RadioButton
+                android:id="@+id/disableButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:checked="@{isDisabled}"
+                android:text="@string/disable" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="@dimen/padding_top"
+            app:visibleIf="@{isLoaded}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/loading"
+            app:visibleIf="@{!isLoaded}" />
+    </LinearLayout>
+</layout>

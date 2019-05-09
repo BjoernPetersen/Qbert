@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="net.bjoernpetersen.musicbot.api.player.PlayerState" />
+
+        <import type="net.bjoernpetersen.musicbot.api.player.Song" />
+
+        <import type="net.bjoernpetersen.musicbot.api.player.SongEntry" />
+
+        <variable
+            name="entry"
+            type="SongEntry" />
+
+        <variable
+            name="time"
+            type="String" />
+
+        <variable
+            name="isPlaying"
+            type="boolean" />
+
+        <variable
+            name="isError"
+            type="boolean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_top">
+
+        <ImageView
+            android:id="@+id/album_art"
+            android:layout_width="@dimen/player_image"
+            android:layout_height="@dimen/player_image"
+            android:contentDescription="@string/album_art_image"
+            tools:background="@android:color/darker_gray" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_h1"
+            android:layout_marginBottom="@dimen/margin_h1"
+            android:singleLine="true"
+            android:text="@{entry.song.title}"
+            android:textColor="@color/textTitle"
+            android:textSize="@dimen/h1"
+            android:textStyle="bold"
+            tools:text="Kenning West, Alder" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:lines="3"
+            android:text="@{entry.song.description}"
+            android:textSize="@dimen/h2"
+            tools:text="Kenning West, Alder, performed by Kenning West, produced by Kenning West Records" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:text="@{time}"
+            android:textSize="@dimen/h2"
+            tools:text="0:00 / unknown" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:text="@{entry.user.name ?? @string/suggested}"
+            android:textSize="@dimen/h2"
+            android:textStyle="italic"
+            tools:text="@string/suggested" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/play_button"
+                android:layout_width="@dimen/player_button"
+                android:layout_height="@dimen/player_button"
+                android:background="@android:color/transparent"
+                android:contentDescription="@{isPlaying ? @string/pause : @string/play}"
+                android:src="@{isPlaying ? @drawable/ic_pause : @drawable/ic_play}"
+                tools:src="@drawable/ic_play" />
+
+            <View
+                android:layout_width="@dimen/margin_button"
+                android:layout_height="match_parent" />
+
+            <ImageButton
+                android:id="@+id/next_button"
+                android:layout_width="@dimen/player_button"
+                android:layout_height="@dimen/player_button"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/next"
+                android:src="@drawable/ic_next" />
+        </LinearLayout>
+
+        <ImageView
+            visibleHideIf="@{isError}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_button"
+            android:contentDescription="@string/player_error"
+            android:src="@drawable/ic_error" />
+    </LinearLayout>
+</layout>

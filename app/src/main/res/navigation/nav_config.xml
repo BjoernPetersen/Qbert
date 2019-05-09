@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_config"
+    app:startDestination="@id/coldFragment">
+
+    <fragment
+        android:id="@+id/coldFragment"
+        android:name="net.bjoernpetersen.qbert.view.config.fragment.ColdFragment"
+        android:label="@string/app_name">
+        <action
+            android:id="@+id/view_dependencies"
+            app:destination="@id/dependencyOverviewFragment" />
+        <action
+            android:id="@+id/start_bot"
+            app:destination="@id/runActivity" />
+        <action
+            android:id="@+id/select_implementation"
+            app:destination="@id/implementationSelectFragment" />
+        <action
+            android:id="@+id/view_config"
+            app:destination="@id/configOverview" />
+        <action
+            android:id="@+id/configure_plugin"
+            app:destination="@id/pluginConfigFragment" />
+        <action
+            android:id="@+id/select_dependencies"
+            app:destination="@id/dependencyListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dependencyOverviewFragment"
+        android:name="net.bjoernpetersen.qbert.view.config.fragment.DependencyOverviewFragment"
+        android:label="@string/title_dependency_overview">
+        <action
+            android:id="@+id/select_implementation"
+            app:destination="@id/implementationSelectFragment" />
+        <argument
+            android:name="startTab"
+            android:defaultValue="PROVIDER"
+            app:argType="net.bjoernpetersen.qbert.android.ActivePluginType" />
+        <action
+            android:id="@+id/select_dependencies"
+            app:destination="@id/dependencyListFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/runActivity"
+        android:name="net.bjoernpetersen.qbert.view.RunActivity" />
+    <fragment
+        android:id="@+id/implementationSelectFragment"
+        android:name="net.bjoernpetersen.qbert.view.config.fragment.ImplementationSelectFragment"
+        android:label="@string/select_implementation">
+        <argument
+            android:name="base"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/configOverview"
+        android:name="net.bjoernpetersen.qbert.view.config.fragment.ConfigOverviewFragment"
+        android:label="@string/title_config_overview">
+        <action
+            android:id="@+id/configure_plugin"
+            app:destination="@id/pluginConfigFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pluginConfigFragment"
+        android:name="net.bjoernpetersen.qbert.view.config.fragment.PluginConfigFragment"
+        android:label="@string/title_plugin_config">
+        <argument
+            android:name="pluginClassName"
+            app:argType="string" />
+        <argument
+            android:name="tab"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/dependencyListFragment"
+        android:name="net.bjoernpetersen.qbert.view.config.fragment.DependencyListFragment"
+        android:label="@string/title_dependency_list">
+        <action
+            android:id="@+id/select_dependencies"
+            app:destination="@id/dependencyListFragment" />
+        <argument
+            android:name="bases"
+            app:argType="string[]" />
+        <action
+            android:id="@+id/select_implementation"
+            app:destination="@id/implementationSelectFragment" />
+    </fragment>
+</navigation>

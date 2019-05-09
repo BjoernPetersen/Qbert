@@ -1,0 +1,4 @@
+[submodule "plugins"]
+	path = plugins
+	url = https://github.com/BjoernPetersen/MusicBot-plugins.git
+	branch = develop

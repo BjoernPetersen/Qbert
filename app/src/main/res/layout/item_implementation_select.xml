@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="net.bjoernpetersen.musicbot.spi.plugin.Plugin" />
+
+        <variable
+            name="plugin"
+            type="Plugin" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="@{plugin.name}"
+                android:textColor="@color/textTitle"
+                android:textSize="@dimen/h3"
+                android:textStyle="bold"
+                tools:text="Default implementation" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{plugin.description}"
+                android:textColor="@color/textTitle"
+                android:textSize="12sp"
+                tools:text="The default implementation included with the                                  plugin." />
+        </LinearLayout>
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp" />
+    </LinearLayout>
+</layout>

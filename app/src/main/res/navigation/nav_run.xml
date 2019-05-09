@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_run"
+    app:startDestination="@id/loadFragment">
+    <fragment
+        android:id="@+id/loadFragment"
+        android:name="net.bjoernpetersen.qbert.view.run.fragment.LoadFragment"
+        android:label="@string/loading">
+        <action
+            android:id="@+id/show_running"
+            app:destination="@id/playerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/stopFragment"
+        android:name="net.bjoernpetersen.qbert.view.run.fragment.StopFragment"
+        android:label="@string/stopping">
+        <action
+            android:id="@+id/return_to_main"
+            app:destination="@id/configActivity" />
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="net.bjoernpetersen.qbert:id/stopFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/playerFragment"
+        android:name="net.bjoernpetersen.qbert.view.run.fragment.PlayerFragment"
+        android:label="Player">
+        <action
+            android:id="@+id/stop"
+            app:destination="@id/stopFragment" />
+        <deepLink
+            android:id="@+id/deepLink2"
+            app:uri="net.bjoernpetersen.qbert:id/playerFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/configActivity"
+        android:name="net.bjoernpetersen.qbert.view.ConfigActivity" />
+    <action
+        android:id="@+id/stop"
+        app:destination="@id/stopFragment" />
+    <action
+        android:id="@+id/show_running"
+        app:destination="@id/playerFragment" />
+</navigation>

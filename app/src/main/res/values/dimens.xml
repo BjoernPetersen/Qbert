@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text">16sp</dimen>
+    <dimen name="h1">24sp</dimen>
+    <dimen name="h2">20sp</dimen>
+    <dimen name="h3">18sp</dimen>
+
+    <dimen name="padding_item">5dp</dimen>
+
+    <dimen name="margin_text">10dp</dimen>
+    <dimen name="padding_top">5dp</dimen>
+    <dimen name="margin_head">5dp</dimen>
+    <dimen name="player_button">100dp</dimen>
+    <dimen name="margin_button">20dp</dimen>
+    <dimen name="margin_h1">20dp</dimen>
+    <dimen name="player_image">200dp</dimen>
+</resources>

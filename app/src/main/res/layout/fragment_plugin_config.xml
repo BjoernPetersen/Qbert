@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="net.bjoernpetersen.qbert.android.PluginType" />
+
+        <variable
+            name="name"
+            type="String" />
+
+        <variable
+            name="type"
+            type="PluginType" />
+
+        <variable
+            name="description"
+            type="String" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="@{name}"
+                android:textColor="@color/textTitle"
+                android:textSize="@dimen/h2"
+                android:textStyle="bold"
+                tools:text="Spotify" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_text"
+                android:text="@{type.displayName}"
+                tools:text="Provider" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:text="@{description}"
+            android:textSize="12sp"
+            tools:text="This plugin provides songs from Spotify. Requires a Spotify subscription or magic." />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top" />
+        </androidx.viewpager.widget.ViewPager>
+    </LinearLayout>
+</layout>

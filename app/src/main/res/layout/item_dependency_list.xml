@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="net.bjoernpetersen.qbert.view.config.adapter.PluginInfo" />
+
+        <variable
+            name="info"
+            type="PluginInfo" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{info.displayName}"
+            android:textColor="@color/textTitle"
+            android:textSize="@dimen/h2"
+            android:textStyle="bold"
+            tools:text="Spotify" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@{@string/active(info.active.name)}"
+                tools:text="Active: Default Spotify" />
+
+            <Button
+                android:id="@+id/edit_implementation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/edit" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@{info.satisfied ? @color/textSuccess : @color/textError}"
+                app:text="@{info.satisfied ? @string/satisfied : info.active == null ? @string/no_implementation : @string/unsatisfied}"
+                tools:text="@string/satisfied" />
+
+            <Button
+                android:id="@+id/select_dependencies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/select_dependency"
+                app:visibleIf="@{info.hasDependencies}" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>
