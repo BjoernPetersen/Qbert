@@ -43,15 +43,15 @@ tasks {
     create<GradleBuild>("buildPlugins") {
         description = "Builds shadowJar jars from plugins"
         dir = File(rootDir, "plugins")
-        tasks = Plugins.all.map { ":musicbot-$it:shadowJar" }
+        tasks = BundlePlugin.all.map { ":musicbot-$it:shadowJar" }
         inputs.files(fileTree(File(rootDir, "plugins")) {
             include("buildSrc/src/**")
-            Plugins.all.map {
+            BundlePlugin.all.map {
                 include("musicbot-$it/src/**")
             }
         })
         outputs.files(fileTree(File(rootDir, "plugins")) {
-            Plugins.all.map {
+            BundlePlugin.all.map {
                 include("musicbot-$it/build/libs")
             }
         })
@@ -159,7 +159,7 @@ dependencies {
     )
 
     // Plugins
-    Plugins.all.forEach {
+    BundlePlugin.all.forEach {
         implementation(pluginJar(it))
     }
 
