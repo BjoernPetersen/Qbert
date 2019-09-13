@@ -77,6 +77,12 @@ tasks {
     clean {
         dependsOn("cleanPlugins")
     }
+
+    dependencyUpdates {
+        rejectVersionIf {
+            isUnstable(candidate.version)
+        }
+    }
 }
 
 configurations.all {
