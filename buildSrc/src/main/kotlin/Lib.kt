@@ -1,6 +1,6 @@
 object Lib {
     const val KOTLIN = Plugin.KOTLIN
-    const val KOTLIN_COROUTINES = "1.3.0"
+    const val KOTLIN_COROUTINES = "1.3.1"
     const val SLF4J = "1.7.28"
 
     const val ANDROIDX_CORE = "1.1.0"
@@ -15,7 +15,7 @@ object Lib {
 
     const val SQLITE = "1.0.3"
 
-    const val KTOR = "1.2.2"
+    const val KTOR = "1.2.4"
 
     const val JUNIT = "4.12"
     const val ANDROID_TEST_RUNNER = "1.2.0"
