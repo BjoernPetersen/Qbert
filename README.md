@@ -3,6 +3,8 @@
 MusicBot implementation for Android.
 
 **Note:** This project is in a very early stage and using it is not recommended yet.
+Most parts are slight adaptations of the MusicBot-desktop implementation and will be gradually
+replaced with more appropriate solutions over time.
 
 ## Limitations
 
